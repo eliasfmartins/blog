@@ -1,18 +1,28 @@
+import { PostsLists } from "@/components/PostsList";
 import { SpinLoader } from "@/components/SpinLoader";
+import { postRepository } from "@/repositories/post";
+import { Suspense } from "react";
 
-export default function Home() {
+export default async function Home() {
+
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      teste
-      <SpinLoader className="bg-amber-400"/>
-      <div>
-        <h1 className="text-3xl font-bold underline">
-          Hello world!
+    <div>
+      <header className="text-center text-3xl font-bold r py-8">
+        <h1>
+          My Blog
         </h1>
-        <p className="text-gray-500">This is a simple example of a paragraph.</p>
-        <p className="text-gray-500">This is a simple example of a paragraph.</p>
-      </div>
-      pao
+      </header>
+
+      <Suspense fallback={<SpinLoader />}>
+        <PostsLists />
+      </Suspense>
+
+      <footer className="text-center text-3xl font-bold r py-8">
+        <p>
+          aqui e o footerzinho
+        </p>
+      </footer>
     </div>
   );
 }
