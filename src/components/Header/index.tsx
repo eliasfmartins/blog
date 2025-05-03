@@ -1,24 +1,19 @@
 import clsx from "clsx";
+import Link from "next/link";
 
 export const Header = () => {
   return (
-    <div>
+    <header>
       <h1 className={clsx(
-        'text-6xl',
-        'font-bold',
-        'text-center',
-        'text-gray-500',
-        'animate-spin',
-        'transition-all',
-        'duration-1000',
-        'ease-in-out',
-        'transform',
-        'hover:scale-110',
-        'hover:text-gray-700',
-        'hover:rotate-12',
-        'hover:transition-all',
-        'hover:duration-500',
-      )}  >teste</h1>
-    </div>
+        'text-4xl/normal font-extrabold text-center py-8',
+        'sm:text-5xl/normal sm:py-10',
+        'md:text-6xl/normal sm:py-11',
+        'lg:text-7xl/normal sm:py-12'
+      )}>
+        <Link href="/" >
+          My Blog
+        </Link>
+      </h1>
+    </header>
   );
 }
