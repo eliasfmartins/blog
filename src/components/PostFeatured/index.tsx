@@ -1,32 +1,31 @@
 import React from 'react'
-import { PostHeading } from '../PostHeading'
 import PostCoverImage from '../PostCoverImage'
+import { PostSummary } from '../PostSummary';
 
 export function PostFeatured() {
-  const slug= 'asdasd'
+  const slug = 'asdasd'
   const postLink = `/post${slug}`;
   return (
     <section className="grid grid-cols-1 gap-8 mb-16 sm:grid-cols-2  group">
 
-    <PostCoverImage
-      linkProps={{ href: postLink }}
+      <PostCoverImage
+        linkProps={{ href: postLink }}
 
-      imageProps={
-        {
-          src: '/images/bryen_9.png',
-          alt: 'teste', width: 1200,
-          height: 720,
-          priority: true
-        }}
-    />
+        imageProps={
+          {
+            src: '/images/bryen_9.png',
+            alt: 'teste', width: 1200,
+            height: 720,
+            priority: true
+          }}
+      />
+      <PostSummary
+        createdAt={"2025-04-07T00:33:56.907Z"}
+        title={"Como a escrita pode mudar sua carreira"}
+        excerpt={"Muitas empresas e desenvolvedores individuais escolhem o Next.js justamente porque ele consegue unir simplicidade com recursos avançados."}
+        postLink={postLink}
+        postHeadring='h1' />
 
-    <div className="flex flex-col gap-4 sm:justify-center">
-      <time dateTime="2025-05-04" className="text-slate-600 text-sm/tight block ">04-05-2024 10:00</time>
-      <PostHeading children={'teste'} url={postLink} as="h2" />
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni suscipit impedit laudantium optio obcaecati quisquam adipisci voluptates aliquam incidunt, labore ipsa provident hic, sapiente quam blanditiis voluptatibus quibusdam vitae laboriosam.
-      </p>
-    </div>
-  </section>
+    </section>
   )
 }
