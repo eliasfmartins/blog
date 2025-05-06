@@ -1,10 +1,13 @@
 import React from 'react'
 import PostCoverImage from '../PostCoverImage'
 import { PostSummary } from '../PostSummary';
+import { findAllPublicPosts } from '@/lib/post/queries';
 
-export function PostFeatured() {
-  const slug = 'asdasd'
-  const postLink = `/post${slug}`;
+export async function PostFeatured() {
+
+  const posts = await findAllPublicPosts();
+  const post = posts[0];
+  const postLink = `/post${post.slug}`;
   return (
     <section className="grid grid-cols-1 gap-8 mb-16 sm:grid-cols-2  group">
 
@@ -13,18 +16,20 @@ export function PostFeatured() {
 
         imageProps={
           {
-            src: '/images/bryen_9.png',
-            alt: 'teste', width: 1200,
+            src: post.coverImageUrl,
+            alt: post.title,
+            width: 1200,
             height: 720,
             priority: true
           }}
       />
       <PostSummary
-        createdAt={"2025-04-07T00:33:56.907Z"}
-        title={"Como a escrita pode mudar sua carreira"}
-        excerpt={"Muitas empresas e desenvolvedores individuais escolhem o Next.js justamente porque ele consegue unir simplicidade com recursos avançados."}
+        createdAt={post.createdAt}
+        title={post.title}
+        excerpt={post.excerpt}
         postLink={postLink}
-        postHeadring='h1' />
+        postHeadring='h1'
+      />
 
     </section>
   )
