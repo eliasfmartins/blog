@@ -22,7 +22,8 @@ export default function PostCoverImage({ imageProps, linkProps }: PostCoverImage
     )}>
       <Image
         {...imageProps}
-        className={clsx('group-hover:scale-105',
+        className={clsx(
+          'group-hover:scale-105',
           'w-full',
           'h-full',
           'transition',
