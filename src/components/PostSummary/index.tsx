@@ -1,7 +1,6 @@
 import React from 'react'
 import { PostHeading } from '../PostHeading'
-import { formatDateTime, formatRelativeDate } from '@/utils/format-date-time'
-import { PostModel } from '@/models/post/post-model.D'
+import { PostDate } from '../PostDate'
 
 type PostSummaryProps = {
   postLink: string
@@ -15,14 +14,7 @@ type PostSummaryProps = {
 export function PostSummary({ title, createdAt, excerpt, postLink }: PostSummaryProps) {
   return (
     <div className="flex flex-col gap-4 sm:justify-center">
-      <time
-        dateTime={createdAt}
-        className="text-slate-600 text-sm/tight block"
-        title={formatRelativeDate(createdAt)}
-      >
-        {formatDateTime(createdAt)}
-      </time>
-
+      <PostDate dateTime={createdAt} />
       <PostHeading children={title} url={postLink} as="h2" />
       <p>{excerpt}</p>
     </div>
