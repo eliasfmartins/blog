@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { PostHeading } from "../PostHeading";
 import { PostDate } from '../PostDate/index';
+import { SafeMarkDown } from "../SafeMarkdown";
 
 type SinglePostProps = {
   slug: string
@@ -17,7 +18,7 @@ export async function SinglePost({ slug }: SinglePostProps) {
 
         <Image
 
-        className="rounded-xl "
+          className="rounded-xl "
           src={post.coverImageUrl}
           width={1200}
           height={720}
@@ -27,9 +28,7 @@ export async function SinglePost({ slug }: SinglePostProps) {
         <p>{post.author} | <PostDate dateTime={post.createdAt} /> </p>
       </header>
       <p className="mb-4 text-xl text-slate-600">{post.excerpt}</p>
-      <div>
-        {post.content}
-      </div>
+      <SafeMarkDown markdown={post.content} />
     </article>
   );
 }
