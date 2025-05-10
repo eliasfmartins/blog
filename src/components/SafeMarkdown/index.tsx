@@ -9,10 +9,27 @@ type SafeMarkDownProps = {
 
 export function SafeMarkDown({ markdown }: SafeMarkDownProps) {
   return (
-    <div className={clsx('prose prose-slate', 'w-full', 'max-w-full', 'dark:prose-invert', ' prose-a:text-blue-500 prose-a:hover:text-blue-700 prose-a:transition prose-a:no-underline prose-img:mx-auto md:prose-lg')}>
+    <div className={clsx('prose prose-slate',
+      'w-full',
+      'max-w-full',
+      'dark:prose-invert',
+      'prose-a:text-blue-500',
+      'prose-a:hover:text-blue-700 prose-a:transition',
+      'prose-a:no-underline prose-img:mx-auto md:prose-lg'
+    )}>
       <ReactMarkdown
         rehypePlugins={[rehypeSanitize]}
-        remarkPlugins={[remarkGfm]}>
+        remarkPlugins={[remarkGfm]}
+        components={{
+         table: ({node, ...props}) =>{
+          if(!node?.children) return ''
+          return(
+            <div className='overflow-x-auto'>
+              <table  className='w-full min-w-[600px]'{...props}/>
+            </div>
+          )
+         }}}
+        >
         {markdown}
       </ReactMarkdown>
     </div>
